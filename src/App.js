@@ -9,6 +9,7 @@ import BlogDetails from "./components/BlogDetails";
 import Header from "./components/Header";
 import Home from './components/Home';
 import Login from "./components/Login";
+import ProfileEdit from "./components/ProfileEdit";
 import Register from "./components/Register";
 import UpdateBlog from "./components/UpdateBlog";
 import UserBlog from "./components/UserBlog";
@@ -28,6 +29,8 @@ function App() {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/userBlog' element={<UserBlog />}></Route>
         <Route path='/register' element={<Register />}></Route>
+        <Route path='/profile/:id' element={<ProfileEdit />}></Route>
+        <Route path='*' element={<Register />}></Route>
       </Routes>
       <ToastContainer />
     </div>

@@ -44,7 +44,7 @@ const Blog = () => {
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5'>
                 {blogs && searched?.map(blog=><div key={blog._id}>
-                    <img className='w-full h-80' src={blog.image} alt="" />
+                    <img className='w-full h-72' src={blog.image} alt="" />
                     <p className='font-bold py-3 text-purple-400'>{blog?.user?.username} - {new Date(blog.date).toLocaleDateString()}</p>
                     <h1 className='font-bold text-xl text-purple-500'>{blog.title}</h1>
                     <p>{blog.description.slice(0, 140)}...</p>

@@ -5,7 +5,7 @@ const Profile = () => {
     const navigate = useNavigate()
     const id = localStorage.getItem('userId');
     const handleEditBlog = (id)=>{
-        navigate(`//${id}`)
+        navigate(`/profile/${id}`)
     }
     return (
         <>

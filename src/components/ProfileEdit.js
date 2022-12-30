@@ -1,16 +1,23 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const ProfileEdit = () => {
-    const {id} = useParams()
-    const [detail, setDetail] = useState();
-    const navigate = useNavigate();
-    console.log(detail)
+ 
 
     const [inputs, setInputs] = useState({
-        title: "", description: "", image: ""
+        username: "", 
+        email: "", 
+        description: "", 
+        address: "", 
+        phone: "", 
+        hobby: "", 
+        vision: "", 
     });
+
+    const [detail, setDetail] = useState();
+    const {id} = useParams();
+    console.log(detail)
 
     const handleChange = (e)=>{
         setInputs((prevState)=>({
@@ -21,13 +28,17 @@ const ProfileEdit = () => {
 
     useEffect(()=>{
         const getData = async () =>{
-            const res = await axios.get(`http://localhost:5000/api/blog/${id}`).catch((err)=>console.log(err));
+            const res = await axios.get(`http://localhost:5000/api/user/profile/${id}`).catch((err)=>console.log(err));
             const data = await res.data;
             setDetail(data);
             setInputs({
-                title:data?.user?.title,
+                username:data?.user?.username,
+                email:data?.user?.email,
+                address:data?.user?.address,
+                phone:data?.user?.phone,
+                hobby:data?.user?.hobby,
                 description:data?.user?.description,
-                image:data?.user?.image,
+                vision:data?.user?.vision,
             })
         }
         getData();
@@ -35,42 +46,98 @@ const ProfileEdit = () => {
     console.log(detail);
 
     const getData = async () =>{
-        const res = await axios.patch(`http://localhost:5000/api/blog/updateBlog/${id}`, {
-            title:inputs.title,
+        const res = await axios.patch(`http://localhost:5000/api/user/profileUpdate/${id}`, {
+            username:inputs.username,
+            email:inputs.email,
             description:inputs.description,
-            image:inputs.image,
+            address:inputs.address,
+            phone:inputs.phone,
+            hobby:inputs.hobby,
+            vision:inputs.vision,
         }).catch((err)=>console.log(err));
         const data = await res.data;
         return data;
     }
     
-    const hangleSubmit =(e)=>{
+    const handleSubmit =(e)=>{
         e.preventDefault();
         getData().then(data=>{
             console.log(data)
-            navigate(`/blog/${id}`)
         });
      }
-
 
     return (
         <div className="bg-purple-300">
             <h1>{id}</h1>
             <div className="container mx-auto py-10 flex justify-center gap-10">
                <img className='w-[50%]' src="/images/banner.png" alt="" />
-               <form className="w-[50%] bg-white shadow-lg px-10 py-5 rounded-md" onSubmit={hangleSubmit} action="">
-                  <div className="flex flex-col mt-5">
-                     <label htmlFor="title">Title</label>
-                     <input type="text" name='title' value={inputs.title} onChange={handleChange} placeholder="title" className='border-2 px-2 py-2 w-full rounded-md' />
-                  </div>
-                  <div className="flex flex-col mt-5">
-                     <label htmlFor="description">Description</label>
-                     <textarea type="text" value={inputs.description} name="description" onChange={handleChange} cols="30" rows="10" className='border-2 px-2 py-2 w-full rounded-md'></textarea>
-                  </div>
-                  <div className="flex flex-col mt-5">
-                     <label htmlFor="fname">Blog Image</label>
-                     <input type="text" value={inputs.image} onChange={handleChange} name='image' placeholder="blog image" className='border-2 px-2 py-2 w-full rounded-md' />
-                  </div>
+               <form className="w-[50%] bg-white shadow-lg px-10 py-5 rounded-md" onSubmit={handleSubmit} action="">
+                    <div className="flex flex-col mt-5">
+                        <label htmlFor="username">username</label>
+                        <input type="text" 
+                        name='username' 
+                        value={inputs.username}
+                        onChange={handleChange}
+                        className='border-2 px-2 py-2 w-full rounded-md' />
+                    </div>
+                    <div className="flex flex-col mt-5">
+                        <label htmlFor="email">email</label>
+                        <input type="text" 
+                        name='email' 
+                        value={inputs.email}
+                        onChange={handleChange}
+                        className='border-2 px-2 py-2 w-full rounded-md' />
+                    </div>
+                
+                    <div className="flex flex-col mt-5">
+                        <label htmlFor="description">description</label>
+                        <textarea type="text" 
+                        name='description'  
+                        value={inputs.description}
+                        onChange={handleChange}
+                        className='border-2 px-2 py-2 w-full rounded-md'></textarea>
+                    </div>
+                    <div className="flex flex-col mt-5">
+                        <label htmlFor="hobby">hobby</label>
+                        <input type="text" 
+                        name='hobby' 
+                        value={inputs.hobby}
+                        onChange={handleChange}
+                        className='border-2 px-2 py-2 w-full rounded-md' />
+                    </div>
+                    <div className="flex flex-col mt-5">
+                        <label htmlFor="vision">vision</label>
+                        <input type="text" 
+                        name='vision'  
+                        value={inputs.vision}
+                        onChange={handleChange}
+                        className='border-2 px-2 py-2 w-full rounded-md' />
+                    </div>
+                    <div className="flex flex-col mt-5">
+                        <label htmlFor="address">address</label>
+                        <input type="text" 
+                        name='address' 
+                        value={inputs.address}
+                        onChange={handleChange}
+                        className='border-2 px-2 py-2 w-full rounded-md' />
+                    </div>
+                    <div className="flex flex-col mt-5">
+                        <label htmlFor="phone">phone</label>
+                        <input type="text" 
+                        name='phone'  
+                        value={inputs.phone}
+                        onChange={handleChange}
+                        className='border-2 px-2 py-2 w-full rounded-md' />
+                    </div>
+                    {/* <div className="flex flex-col mt-5">
+                        <label htmlFor="image">Profile Img</label>
+                        <input type="file" 
+                        name='image' 
+                        value={user.image}
+                        onChange={(e) => setProfile({ ...profile, image: e.target.files[0] })}
+                        />
+                    </div> */}
+                
                   <button type='submit' className='bg-red-500 px-2 py-2 rounded-md mt-5'>create blog</button>
                </form>
             </div>

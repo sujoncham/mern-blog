@@ -44,7 +44,7 @@ const UpdateBlog = () => {
         return data;
     }
     
-    const hangleSubmit =(e)=>{
+    const handleSubmit =(e)=>{
         e.preventDefault();
         getData().then(data=>{
             console.log(data)
@@ -56,7 +56,7 @@ const UpdateBlog = () => {
             <h1>{updateId}</h1>
             <div className="container mx-auto py-10 flex justify-center gap-10">
                <img className='w-[50%]' src="/images/banner.png" alt="" />
-               <form className="w-[50%] bg-white shadow-lg px-10 py-5 rounded-md" onSubmit={hangleSubmit} action="">
+               <form className="w-[50%] bg-white shadow-lg px-10 py-5 rounded-md" onSubmit={handleSubmit} action="">
                   <div className="flex flex-col mt-5">
                      <label htmlFor="title">Title</label>
                      <input type="text" name='title' value={inputs.title} onChange={handleChange} placeholder="title" className='border-2 px-2 py-2 w-full rounded-md' />

@@ -47,21 +47,21 @@ const Register = () => {
                         <h1 className='text-4xl font-bold'>Register</h1>
                     </div>
                     <form onSubmit={hangleSubmit} >
-                    <div className="flex flex-col mt-5">
-                        <label htmlFor="username">username</label>
-                        <input type="text" name='username' onChange={handleChange} placeholder="username" className='border-2 px-2 py-2 w-full rounded-md' />
-                    </div>
-                    <div className="flex flex-col mt-5">
-                        <label htmlFor="email">email</label>
-                        <input type="text" name='email' onChange={handleChange} placeholder="email" className='border-2 px-2 py-2 w-full rounded-md' />
-                    </div>
-                   
-                    <div className="flex flex-col mt-5">
-                        <label htmlFor="password">password</label>
-                        <input type="text" onChange={handleChange} name='password' placeholder="password" className='border-2 px-2 py-2 w-full rounded-md' />
-                    </div>
-                    <button type='submit' className='bg-red-500 px-2 py-2 rounded-md mt-5'>create account</button>
-                </form>
+                        <div className="flex flex-col mt-5">
+                            <label htmlFor="username">username</label>
+                            <input type="text" name='username' onChange={handleChange} placeholder="username" className='border-2 px-2 py-2 w-full rounded-md' />
+                        </div>
+                        <div className="flex flex-col mt-5">
+                            <label htmlFor="email">email</label>
+                            <input type="text" name='email' onChange={handleChange} placeholder="email" className='border-2 px-2 py-2 w-full rounded-md' />
+                        </div>
+                    
+                        <div className="flex flex-col mt-5">
+                            <label htmlFor="password">password</label>
+                            <input type="text" onChange={handleChange} name='password' placeholder="password" className='border-2 px-2 py-2 w-full rounded-md' />
+                        </div>
+                        <button type='submit' className='bg-red-500 px-2 py-2 rounded-md mt-5'>create account</button>
+                    </form>
                 <p>already have an account? <Link to='/login' className='text-purple-500'>Login</Link> here</p>
             </div>
             </div>
