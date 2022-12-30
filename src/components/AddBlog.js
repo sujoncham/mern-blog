@@ -1,12 +1,13 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const AddBlog = () => {
   const [inputs, setInputs] = useState({
       title: "", description: "", image: ""
   });
-  const navigate = useNavigate();
+//   const navigate = useNavigate();
   
    const handleChange = (e)=>{
       setInputs((prevState)=>({
@@ -30,12 +31,12 @@ const AddBlog = () => {
 
    const hangleSubmit =(e)=>{
       e.preventDefault();
-      console.log(inputs)
+      // console.log(inputs)
       sendRequest().then((data)=>{
-         console.log(data);
-         console.log('user created successfull');
+         // console.log(data);
+         toast('user created successfull');
          e.target.reset();
-         navigate('/addBlog')
+         // navigate('/addBlog')
       })
    }
     return (

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const UserBlog = () => {
     const [users, setUsers] = useState([])
@@ -28,7 +29,7 @@ const UserBlog = () => {
         if(delConfirm){
             await axios.delete(`http://localhost:5000/api/blog/${id}`)
             .then(()=>{
-                console.log('deleted successfully');
+                toast('deleted successfully');
                 window.location.reload();
                 navigate('/userBlog')
             })
@@ -40,7 +41,7 @@ const UserBlog = () => {
             <h1 className='text-3xl font-bold py-10'>My Blogs</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5'>
                 {users.data && users?.data?.blogs?.map(blog=><div key={blog._id}>
-                    <img className='w-full' src={blog.image} alt="" />
+                    <img className='w-full h-56' src={blog.image} alt="" />
                     <div className='flex justify-between items-center'>
                         <span>
                             <h3 className='text-[14px] text-purple-300 font-bold mt-5'>Posted date : {new Date(blog.date).toLocaleDateString()}</h3>

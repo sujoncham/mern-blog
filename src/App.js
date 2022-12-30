@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import AddBlog from "./components/AddBlog";
 import Blog from "./components/Blog";
@@ -27,6 +29,7 @@ function App() {
         <Route path='/userBlog' element={<UserBlog />}></Route>
         <Route path='/register' element={<Register />}></Route>
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

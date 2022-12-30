@@ -25,6 +25,7 @@ const Login = () => {
             console.log(data);
             console.log('login successfull');
             localStorage.setItem("userId", data.data.id)
+            localStorage.setItem("username", data.data.username)
             navigate('/')
         }).catch((err)=>{
             console.log(err);
