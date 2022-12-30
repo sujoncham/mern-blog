@@ -1,17 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Blog from './Blog';
+import Category from './Category';
+import Profile from './Profile';
 
 
 const Home = () => {
 
     return (
-        <div className='container mx-auto px-16'>
-            <div className='flex justify-between items-center'>
-                
-                <Link to='/addTeacher'>Add Teacher</Link>
-            </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
-                
+        <div className='container mx-auto px-10'>
+            <div className='flex gap-5'>
+                <div className='w-[20%] bg-purple-200'> 
+                    <Profile />
+                </div>
+                <div className='w-[60%]'> 
+                    <Blog />
+                </div>
+                <div className='w-[20%] bg-purple-200 px-3'> 
+                    <Category />
+                </div>
             </div>
         </div>
     );

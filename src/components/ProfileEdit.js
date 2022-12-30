@@ -2,10 +2,10 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const UpdateBlog = () => {
+const ProfileEdit = () => {
+    const {id} = useParams()
     const [detail, setDetail] = useState();
     const navigate = useNavigate();
-    const {updateId} = useParams();
     console.log(detail)
 
     const [inputs, setInputs] = useState({
@@ -21,7 +21,7 @@ const UpdateBlog = () => {
 
     useEffect(()=>{
         const getData = async () =>{
-            const res = await axios.get(`http://localhost:5000/api/blog/${updateId}`).catch((err)=>console.log(err));
+            const res = await axios.get(`http://localhost:5000/api/blog/${id}`).catch((err)=>console.log(err));
             const data = await res.data;
             setDetail(data);
             setInputs({
@@ -31,11 +31,11 @@ const UpdateBlog = () => {
             })
         }
         getData();
-    }, [updateId]);
+    }, [id]);
     console.log(detail);
 
     const getData = async () =>{
-        const res = await axios.patch(`http://localhost:5000/api/blog/updateBlog/${updateId}`, {
+        const res = await axios.patch(`http://localhost:5000/api/blog/updateBlog/${id}`, {
             title:inputs.title,
             description:inputs.description,
             image:inputs.image,
@@ -48,12 +48,14 @@ const UpdateBlog = () => {
         e.preventDefault();
         getData().then(data=>{
             console.log(data)
-            navigate(`/blog/${updateId}`)
+            navigate(`/blog/${id}`)
         });
      }
+
+
     return (
         <div className="bg-purple-300">
-            <h1>{updateId}</h1>
+            <h1>{id}</h1>
             <div className="container mx-auto py-10 flex justify-center gap-10">
                <img className='w-[50%]' src="/images/banner.png" alt="" />
                <form className="w-[50%] bg-white shadow-lg px-10 py-5 rounded-md" onSubmit={hangleSubmit} action="">
@@ -76,4 +78,4 @@ const UpdateBlog = () => {
     );
 };
 
-export default UpdateBlog;
+export default ProfileEdit;

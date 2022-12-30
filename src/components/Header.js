@@ -20,9 +20,9 @@ const Header = () => {
                         <Link to='/'>Home</Link>
                         {id && <>
                             <Link to='/addBlog'>Add Blog</Link>
-                            <Link to='/userBlog'>User Blog</Link>
+                            <Link to='/userBlog'>My Blog</Link>
                         </>}
-                        <Link to='/blog'>Blog</Link>
+                        {/* <Link to='/blog'>Blog</Link> */}
                         {!id ? <Link to='/login'>Login</Link> : <button onClick={handleLogout}>Logout</button>}
                         </span>
                 </div>
