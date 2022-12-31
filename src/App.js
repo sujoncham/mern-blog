@@ -11,6 +11,7 @@ import Home from './components/Home';
 import Login from "./components/Login";
 import ProfileEdit from "./components/ProfileEdit";
 import Register from "./components/Register";
+import RequireAuth from "./components/RequireAuth";
 import UpdateBlog from "./components/UpdateBlog";
 import UserBlog from "./components/UserBlog";
 
@@ -21,7 +22,7 @@ function App() {
     <div>
       <Header />
       <Routes>
-        <Route path='/' element={<Home />}></Route>
+        <Route path='/' element={<RequireAuth><Home /></RequireAuth>}></Route>
         <Route path='/addBlog' element={<AddBlog />}></Route>
         <Route path='/blog' element={<Blog />}></Route>
         <Route path='/blog/:id' element={<BlogDetails />}></Route>

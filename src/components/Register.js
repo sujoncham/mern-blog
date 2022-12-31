@@ -16,7 +16,7 @@ const Register = () => {
     }
 
     const sendRequest = async()=>{
-        const res = await axios.post('http://localhost:5000/api/user/signup', {
+        const res = await axios.post('https://mern-blog-server-uoiu.onrender.com/api/user/signup', {
              username: inputs.username,
              email: inputs.email,
              password: inputs.password,
