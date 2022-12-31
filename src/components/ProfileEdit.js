@@ -1,10 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const ProfileEdit = () => {
  
-
+    const navigate = useNavigate()
     const [inputs, setInputs] = useState({
         username: "", 
         email: "", 
@@ -63,6 +63,7 @@ const ProfileEdit = () => {
         e.preventDefault();
         getData().then(data=>{
             console.log(data)
+            navigate(`/profile/${id}`)
         });
      }
 
