@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaBloggerB } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
@@ -15,7 +16,7 @@ const Header = () => {
         <div className='bg-purple-500 py-3 px-5 sticky top-0 z-40'>
             <div className='container mx-auto px-10'>
                 <div className='flex justify-between items-center '>
-                    <Link to='/'>Logo</Link>
+                    <Link className='text-white' to='/'><FaBloggerB size={60} /></Link>
                         <span className='flex justify-end items-center gap-5'>
                         <Link to='/'>Home</Link>
                         {id && <>

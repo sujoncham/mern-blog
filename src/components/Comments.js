@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { FaHeart } from "react-icons/fa";
 
 const Comments = ({id}) => {
     const [inputs, setInputs] = useState({ comment: "" });
@@ -45,13 +46,14 @@ const Comments = ({id}) => {
     return (
         <div>
             <div>
-                <div className="flex flex-col mt-5">
-                    <label htmlFor="comment">like</label>
+                <div className="flex justify-start gap-3 mt-5">
+                    <span className='flex justify-start items-center'>1 <FaHeart /></span>
+                    <button htmlFor="comment">like</button>
                 </div>
             </div>
             <div>
                 <form onSubmit={hangleComment} className='border-b-2 py-3 border-purple-200'>
-                    <div className="flex flex-col mt-5 mb-2">
+                    <div className="flex flex-col mb-2">
                         <label className='font-bold text-xl text-purple-400' htmlFor="comment">Comments : </label>
                         <textarea type="text" onChange={handleChange} name="comment" cols="10" rows="3" className='border-2 px-2 py-2 w-[550px] rounded-md'></textarea>
                     </div>
@@ -60,7 +62,7 @@ const Comments = ({id}) => {
                 <div className="flex flex-col mt-5 py-2">
                     {comments && comments?.data?.map(comment =><div key={comment._id} className="border-b-2 border-purple-200 py-3">
                     <div className='flex justify-start gap-3'>
-                        <img className='w-12 h-12 border-4 border-purple-600 rounded-full' src="/images/banner.png" alt="" />
+                        <img className='w-12 h-12 border-2 border-purple-600 rounded-full' src="/images/banner.png" alt="" />
                         <span className='flex flex-col'>
                             <span>{comment.username}</span>
                             <span>{new Date(comment.commentDate).toDateString()}</span>

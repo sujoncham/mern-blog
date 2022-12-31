@@ -28,7 +28,7 @@ const BlogDetails = () => {
                     <div>
                         <img className='w-full h-[350px]' src={detail?.user?.image} alt="" />
                         <div className='flex justify-start gap-3 py-3'>
-                            <img className='w-12 h-12 border-4 border-purple-600 rounded-full' src="/images/banner.png" alt="" />
+                            <img className='w-12 h-12 border-2 border-purple-600 rounded-full' src="/images/banner.png" alt="" />
                             <span>
                                 <h1 className='font-bold text-purple-500'>{detail.user?.user?.username}</h1>
                                 <h1 className='font-bold text-gray-800'>{new Date(detail.user?.date).toLocaleDateString()}</h1>

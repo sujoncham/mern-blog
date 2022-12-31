@@ -1,71 +1,72 @@
-# Getting Started with Create React App
+# MERN FULL STACK- Mern Blog
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### Live Project: (https://mern-blog-client.onrender.com/)
 
-## Available Scripts
+![Alt text](public/images/Screenshot_11.png)
 
-In the project directory, you can run:
+## Name of Project
 
-### `npm start`
+- Mern Blog
+- reactsj, Nodejs, mongodb based
+- Language : Javascript
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Home Page
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![Alt text](public/images/Screenshot_12.png)
 
-### `npm test`
+## Technology used in Blog
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- reactjs
+- tailwindcss
+- nodejs
+- expressjs
+- mongodb-atlas
+- mongoose
+- github
+- vscode
 
-### `npm run build`
+## Packages used in Blog front end development
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- react-icons
+- react-router-dom
+- toastify
+- axios
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Packages used in Blog back end development
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- cors
+- dotenv
+- nodemon
+- multer
 
-### `npm run eject`
+## Authenticate this Blog
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- password hashing by bcrypt
+- jwt use for token
+- login by user id from localstorage
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## How to use this Blog
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- first, register
+- then, login
+- update your profile
+- write blog
+- indivisual blog
+- can read details blog
+- can comment about the blog
+- mongoose mvc pattern in backend part
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## requirements pending this Blog
 
-## Learn More
+- user likes
+- category adding
+- email verification
+- google login system
+- profile image adding
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Primarily Deploy this project
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- server-side deploy in render.com
+- client-side deploy in render.com
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# mern-blog
+### Still running this project
