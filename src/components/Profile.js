@@ -9,7 +9,7 @@ const Profile = () => {
     const id = localStorage.getItem('userId');
     // console.log(user)
     const userDetail = (user.user);
-    const profile = `http://localhost:5000/`;
+    const profile = `https://mern-blog-server-uoiu.onrender.com/`;
     
 
     useEffect(()=>{

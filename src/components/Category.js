@@ -11,7 +11,7 @@ const Category = () => {
 
     useEffect(()=>{
         const getData = async () =>{
-        await axios.get('http://localhost:5000/api/category/')
+        await axios.get('https://mern-blog-server-uoiu.onrender.com/api/category/')
         .catch((err)=>{
              console.log(err)
          })

@@ -20,7 +20,7 @@ const AddBlog = () => {
   }
 
    const sendRequest = async()=>{
-      const res = await axios.post('http://localhost:5000/api/blog/createBlog', {
+      const res = await axios.post('https://mern-blog-server-uoiu.onrender.com/api/blog/createBlog', {
          title: inputs.title,
          description: inputs.description,
          category: inputs.category,
@@ -49,7 +49,7 @@ const AddBlog = () => {
 
     useEffect(()=>{
         const getData = async () =>{
-        await axios.get('http://localhost:5000/api/category/').catch((err)=>console.log(err))
+        await axios.get('https://mern-blog-server-uoiu.onrender.com/api/category/').catch((err)=>console.log(err))
         .then((data)=>setCates(data.data.data))
     }
     getData()
