@@ -1,18 +1,49 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { FaFolderPlus } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Category = () => {
+    const [cates, setCates] = useState([])
+    const id = localStorage.getItem('userId');
+    const navigate = useNavigate()
+    // console.log(cates)
+
+    useEffect(()=>{
+        const getData = async () =>{
+        await axios.get('http://localhost:5000/api/category/')
+        .catch((err)=>{
+             console.log(err)
+         })
+        .then((data)=>{
+        //    console.log("data get", data);
+           setCates(data.data.data)
+        })
+    }
+    getData()
+    }, [])
+
+    const handleCreateCategory = (id)=>{
+        navigate(`/createCategory/${id}`)
+    }
     return (
         <>
-            <h1 className='font-bold text-xl text-purple-500 py-3'>Blog Categories</h1>
-            <ul className='flex flex-col gap-2'>
-                <li><Link to='/' className='bg-purple-500 hover:bg-purple-400 hover:text-white px-3 py-2 rounded-lg w-full block'>Music</Link></li>
-                <li><Link to='/' className='bg-purple-500 hover:bg-purple-400 hover:text-white px-3 py-2 rounded-lg w-full block'>Sports</Link></li>
-                <li><Link to='/' className='bg-purple-500 hover:bg-purple-400 hover:text-white px-3 py-2 rounded-lg w-full block'>Health</Link></li>
-                <li><Link to='/' className='bg-purple-500 hover:bg-purple-400 hover:text-white px-3 py-2 rounded-lg w-full block'>LifeStyle</Link></li>
-                <li><Link to='/' className='bg-purple-500 hover:bg-purple-400 hover:text-white px-3 py-2 rounded-lg w-full block'>Celebraty</Link></li>
-                <li><Link to='/' className='bg-purple-500 hover:bg-purple-400 hover:text-white px-3 py-2 rounded-lg w-full block'>Food</Link></li>
-                <li><Link to='/' className='bg-purple-500 hover:bg-purple-400 hover:text-white px-3 py-2 rounded-lg w-full block'>Current World</Link></li>
+            <div className='flex justify-between items-center'>
+                <h1 className='font-bold text-xl text-purple-500 py-3'>Blog Categories</h1>
+                <button onClick={()=>handleCreateCategory(id)} className='px-3 py-2 bg-purple-300 rounded-lg'><FaFolderPlus /></button>
+            </div>
+            <ul className='flex flex-col gap-1'>
+                {  
+                cates.map(cate=> {
+                    return (
+                        <li key={cate._id}>
+                        <Link to='/' className='bg-purple-500 hover:bg-purple-400 hover:text-white px-3 py-1 rounded-lg w-full block'>{cate.category}</Link>
+                        </li>
+                )
+                })
+                
+                }
+            
             </ul>
             
         </>

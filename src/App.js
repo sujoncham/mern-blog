@@ -6,10 +6,12 @@ import './App.css';
 import AddBlog from "./components/AddBlog";
 import Blog from "./components/Blog";
 import BlogDetails from "./components/BlogDetails";
+import CreateCategory from "./components/CreateCategory";
 import Header from "./components/Header";
 import Home from './components/Home';
 import Login from "./components/Login";
 import ProfileEdit from "./components/ProfileEdit";
+import ProfileImg from "./components/ProfileImg";
 import Register from "./components/Register";
 import RequireAuth from "./components/RequireAuth";
 import UpdateBlog from "./components/UpdateBlog";
@@ -24,6 +26,7 @@ function App() {
       <Routes>
         <Route path='/' element={<RequireAuth><Home /></RequireAuth>}></Route>
         <Route path='/addBlog' element={<AddBlog />}></Route>
+        <Route path='/createCategory/:id' element={<CreateCategory />}></Route>
         <Route path='/blog' element={<Blog />}></Route>
         <Route path='/blog/:id' element={<BlogDetails />}></Route>
         <Route path='/userBlog/:updateId' element={<UpdateBlog />}></Route>
@@ -31,6 +34,7 @@ function App() {
         <Route path='/userBlog' element={<UserBlog />}></Route>
         <Route path='/register' element={<Register />}></Route>
         <Route path='/profile/:id' element={<ProfileEdit />}></Route>
+        <Route path='/profileImg/:id' element={<ProfileImg />}></Route>
         <Route path='*' element={<Register />}></Route>
       </Routes>
       <ToastContainer />

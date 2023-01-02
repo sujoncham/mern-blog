@@ -9,7 +9,7 @@ const Comments = ({id}) => {
 
     useEffect(()=>{
         const getComment = async () =>{
-            const res = await axios.get(`https://mern-blog-server-uoiu.onrender.com/api/comment/`).catch((err)=>console.log(err));
+            const res = await axios.get(`http://localhost:5000/api/comment/${id}`).catch((err)=>console.log(err));
             const data = await res.data;
             setComments(data);
         }
@@ -25,9 +25,9 @@ const Comments = ({id}) => {
     }
   
      const sendRequest = async()=>{
-        const res = await axios.post('https://mern-blog-server-uoiu.onrender.com/api/comment/createComment', {
+        const res = await axios.post('http://localhost:5000/api/comment/createComment', {
            comment: inputs.comment,
-           username: localStorage.getItem('username'),
+           user: localStorage.getItem('userId'),
          }).catch((err)=>{
              console.log(err);
          })
@@ -37,10 +37,10 @@ const Comments = ({id}) => {
   
      const hangleComment =(e)=>{
         e.preventDefault();
-        console.log(inputs)
+        // console.log(inputs)
         sendRequest().then((data)=>{
            console.log('comment created successfull', data);
-        //    e.target.reset();
+           e.target.reset();
         })
      }
     return (

@@ -130,15 +130,6 @@ const ProfileEdit = () => {
                         onChange={handleChange}
                         className='border-2 px-2 py-2 w-full rounded-md' />
                     </div>
-                    {/* <div className="flex flex-col mt-5">
-                        <label htmlFor="image">Profile Img</label>
-                        <input type="file" 
-                        name='image' 
-                        value={user.image}
-                        onChange={(e) => setProfile({ ...profile, image: e.target.files[0] })}
-                        />
-                    </div> */}
-                
                   <button type='submit' className='bg-red-500 px-2 py-2 rounded-md mt-5'>create blog</button>
                </form>
             </div>
