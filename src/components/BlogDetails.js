@@ -8,17 +8,25 @@ import Profile from './Profile';
 const BlogDetails = () => {
     const {id} = useParams();
     const [detail, setDetail] = useState({})
+    const [isLoading, setIsLoading] = useState(true)
     const post = detail?.user;
     console.log(detail);
+
+   
 
     useEffect(()=>{
         const getData = async () =>{
             const res = await axios.get(`https://mern-blog-server-uoiu.onrender.com/api/blog/${id}`).catch((err)=>console.log(err));
             const data = await res.data;
             setDetail(data);
+            setIsLoading(false)
         }
         getData();
     }, [id]);
+
+    if(isLoading){
+        return <p>Loading...</p>
+    }
 
     const handleLike =()=>{
         const getLike = async () =>{
