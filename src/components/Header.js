@@ -16,15 +16,19 @@ const Header = () => {
         <div className='bg-purple-500 py-3 px-5 sticky top-0 z-40'>
             <div className='container mx-auto px-10'>
                 <div className='flex justify-between items-center '>
-                    <Link className='text-white' to='/'><FaBloggerB size={60} /></Link>
+                    <Link className='text-white' to='/'>
+                        <span className='flex justify-start gap-1'>
+                        <FaBloggerB size={30} /> <span>MERN BLOG</span>
+                        </span>
+                    </Link>
                         <span className='flex justify-end items-center gap-5'>
-                        <Link to='/'>Home</Link>
-                        {id && <>
+                            <Link to='/'>Home</Link>
+                            {id && <>
                             <Link to='/addBlog'>Add Blog</Link>
                             <Link to='/userBlog'>My Blog</Link>
-                        </>}
-                        {/* <Link to='/blog'>Blog</Link> */}
-                        {!id ? <Link to='/login'>Login</Link> : <button onClick={handleLogout}>Logout</button>}
+                            </>}
+                            {/* <Link to='/blog'>Blog</Link> */}
+                            {!id ? <Link to='/login'>Login</Link> : <button onClick={handleLogout}>Logout</button>}
                         </span>
                 </div>
             </div>
