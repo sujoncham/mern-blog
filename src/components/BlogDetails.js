@@ -1,4 +1,5 @@
 import axios from 'axios';
+import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
@@ -11,7 +12,7 @@ const BlogDetails = () => {
     const [isLoading, setIsLoading] = useState(true)
     const post = detail?.user;
     console.log(detail);
-
+    const profile = `https://mern-blog-server-uoiu.onrender.com/`;
    
 
     useEffect(()=>{
@@ -23,7 +24,6 @@ const BlogDetails = () => {
                 setDetail(data);
                 setIsLoading(false)
             });
-            
         }
         getData();
     }, [id]);
@@ -56,10 +56,14 @@ const BlogDetails = () => {
                     <div>
                         <img className='w-full h-[350px]' src={post?.image} alt="" />
                         <div className='flex justify-start gap-3 py-3'>
-                            <img className='w-12 h-12 border-2 border-purple-600 rounded-full' src="/images/banner.png" alt="" />
+                            <img 
+                                className='w-12 h-12 border-2 border-purple-600 rounded-full' 
+                                src={profile + post?.user?.profileImg}  
+                                alt="" 
+                            />
                             <span>
                                 <h1 className='font-bold text-purple-500'>{post?.user?.username}</h1>
-                                <h1 className='font-bold text-gray-800'>{new Date(post?.date).toLocaleDateString()}</h1>
+                                <h1 className='font-bold text-gray-800'>{moment.utc(post?.date).local().startOf('seconds').fromNow()}</h1>
                             </span>
                         </div>
                         <div>
