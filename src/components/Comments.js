@@ -1,11 +1,10 @@
 import axios from 'axios';
 import moment from 'moment';
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
 
-const Comments = ({post}) => {
+const Comments = ({post, id}) => {
     const [comment, setComment] = useState("")
-    const {id} = useParams();
+    
     console.log(post?.comments)
     const profile = `https://mern-blog-server-uoiu.onrender.com/`;
 

@@ -18,6 +18,7 @@ const BlogDetails = () => {
         const getData = async () =>{
             const res = await axios.get(`https://mern-blog-server-uoiu.onrender.com/api/blog/${id}`).catch((err)=>console.log(err));
             const data = await res.data;
+            console.log(data)
             setDetail(data);
             setIsLoading(false)
         }
@@ -37,7 +38,6 @@ const BlogDetails = () => {
             .then((data)=>{
                 console.log(data)
                 console.log('successfull like')
-                window.location.reload();
             });
         }
         getLike();
@@ -70,7 +70,7 @@ const BlogDetails = () => {
                             </div>
                         </div>
                     </div>
-                    <Comments post={post} />
+                    <Comments id={id} post={post} />
                 </div>
             </div>
         </div>
