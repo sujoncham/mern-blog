@@ -8,11 +8,11 @@ import Profile from './Profile';
 
 const BlogDetails = () => {
     const {id} = useParams();
-    const [detail, setDetail] = useState({})
+    const [detail, setDetail] = useState()
     const [isLoading, setIsLoading] = useState(true)
-    const post = detail?.user;
+    const post = detail?.data?.user;
     console.log(detail);
-    const profile = `https://mern-blog-server-uoiu.onrender.com/`;
+    const profile = `http://localhost:5000/`;
    
 
     useEffect(()=>{

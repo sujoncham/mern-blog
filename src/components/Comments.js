@@ -6,7 +6,7 @@ const Comments = ({post, id}) => {
     const [comment, setComment] = useState("")
     
     console.log(post?.comments)
-    const profile = `https://mern-blog-server-uoiu.onrender.com/`;
+    const profile = `http://localhost:5000/`;
 
      const hangleComment =(e)=>{
         e.preventDefault();
