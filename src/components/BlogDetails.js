@@ -16,11 +16,14 @@ const BlogDetails = () => {
 
     useEffect(()=>{
         const getData = async () =>{
-            const res = await axios.get(`https://mern-blog-server-uoiu.onrender.com/api/blog/${id}`).catch((err)=>console.log(err));
-            const data = await res.data;
-            console.log(data)
-            setDetail(data);
-            setIsLoading(false)
+            await axios.get(`https://mern-blog-server-uoiu.onrender.com/api/blog/${id}`)
+            .catch((err)=>console.log(err))
+            .then((data)=>{
+                console.log(data)
+                setDetail(data);
+                setIsLoading(false)
+            });
+            
         }
         getData();
     }, [id]);
