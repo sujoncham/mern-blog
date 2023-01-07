@@ -28,7 +28,7 @@ const ProfileEdit = () => {
 
     useEffect(()=>{
         const getData = async () =>{
-            const res = await axios.get(`https://mern-blog-server-uoiu.onrender.com/api/user/profile/${id}`).catch((err)=>console.log(err));
+            const res = await axios.get(`http://localhost:5000/api/user/profile/${id}`).catch((err)=>console.log(err));
             const data = await res.data;
             setDetail(data);
             setInputs({
@@ -46,7 +46,7 @@ const ProfileEdit = () => {
     console.log(detail);
 
     const getData = async () =>{
-        const res = await axios.patch(`https://mern-blog-server-uoiu.onrender.com/api/user/profileUpdate/${id}`, {
+        const res = await axios.patch(`http://localhost:5000/api/user/profileUpdate/${id}`, {
             username:inputs.username,
             email:inputs.email,
             description:inputs.description,

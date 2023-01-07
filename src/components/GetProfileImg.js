@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 const GetProfileImg = ({id}) => {
     const [profileImg, setProfileImg] = useState({})
-    const profile = `https://mern-blog-server-uoiu.onrender.com/api/user/profileImgId/${id}`;
+    const profile = `http://localhost:5000/api/user/profileImgId/${id}`;
     console.log(profileImg)
     useEffect(()=>{
         const getData = async() =>{

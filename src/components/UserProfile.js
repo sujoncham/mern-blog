@@ -1,56 +1,60 @@
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import moment from 'moment';
 import React from 'react';
-import { FaRegEdit, FaTrashAlt } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { useNavigate, useParams } from 'react-router-dom';
 import ActiveUser from './ActiveUser';
-import Profile from './Profile';
-import { getFollow, getUnfollow } from './SharedData/Follow';
-import UserData from './SharedData/UserData';
+import SideProfile from './SideProfile';
 
-const UserBlog = () => {
-    const {users} = UserData();
+const UserProfile = () => {
+    const {id} = useParams()
     const navigate = useNavigate();
-    console.log(users)
     const profile = `http://localhost:5000/`;
+    
+    const { isLoading, error, data } = useQuery({
+        queryKey: ['users', id],
+        queryFn: () =>
+          fetch(`http://localhost:5000/api/user/profile/${id}`).then(
+            (res) => res.json(),
+          ),
+        })
+        const users = data;
+        
+        const handleDetail = (id) =>{
+            navigate(`/blog/${id}`)
+        }
 
-
-
-    const handleDetail = (id) =>{
-        navigate(`/blog/${id}`)
-    }
-
-    const handleEditBlog = (id) =>{
-        navigate(`/userBlog/${id}`)
-    }
-
-    const handleDeleteBlog = async(id)=>{
-        const delConfirm = window.confirm('are you sure to delete this blog?');
-        if(delConfirm){
-            await axios.delete(`http://localhost:5000/api/blog/${id}`)
-            .then(()=>{
-                toast('deleted successfully');
-                window.location.reload();
-                navigate('/userBlog')
+        const handleFollow =async (id)=>{
+            await axios.patch(`http://localhost:5000/api/user/profile/${id}/follow`, {
+                userId: localStorage.getItem('userId')
             })
             .catch((err)=>console.log(err))
+            .then((data)=>{
+                console.log(data)
+                console.log('successfull follow')
+            });
         }
-    }
+        const handleUnfollow =async (id)=>{
+            await axios.patch(`http://localhost:5000/api/user/profile/${id}/unFollow`, {
+                userId: localStorage.getItem('userId')
+            })
+            .catch((err)=>console.log(err))
+            .then((data)=>{
+                console.log(data)
+                console.log('successfull follow')
+            });
+        }
 
-    const handleFollow =(id)=>{
-        getFollow(id);
-    }
-    const handleUnfollow =(id)=>{
-        getUnfollow(id);
-    }
+        if (isLoading) return 'Loading...'
+ 
+        if (error) return 'An error has occurred: ' + error.message;
 
     return (
         <div className='container mx-auto px-10 bg-purple-100'>
             <h1 className='text-3xl font-bold text-purple-600'>My Blogs</h1>
             <div className='flex gap-5'>
                 <div className='w-[25%] bg-purple-200'> 
-                    <Profile users={users} />
+                    <SideProfile users={users} />
                 </div>
                 <div className='w-[50%]'> 
                 <div>
@@ -70,12 +74,12 @@ const UserBlog = () => {
                     </div>
                     <div className='flex justify-evenly items-center py-5'>
                         <span>{users?.user?.address}</span>
-                        <span>
+                        <span className='flex flex-col items-center'>
                             {
                                 users?.user?.followers === users?.user?._id ?
-                                <button onClick={handleUnfollow} className='bg-purple-500 px-2 py-1 rounded-lg'>Unfollow</button>
-                                :
-                                <button onClick={handleFollow} className='bg-purple-500 px-2 py-1 rounded-lg'>Follow</button>
+                                <button onClick={()=>handleFollow(users?.user?._id)} className='bg-purple-500 px-2 py-1 rounded-lg'>Follow</button>
+                            :
+                                <button onClick={()=>handleUnfollow(users?.user?._id)} className='bg-purple-500 px-2 py-1 rounded-lg'>Unfollow</button>
                             }
                         </span>
                         <span>{users?.user?.phone}</span>
@@ -89,11 +93,7 @@ const UserBlog = () => {
                             <div className='flex justify-between items-center'>
                                 <span>
                                     <h3 className='text-[14px] text-purple-400 font-bold mt-5'>Posted date : {moment.utc(blog?.date).local().startOf('seconds').fromNow()}</h3>
-                                    <h3 className='text-[16px] font-bold'><span className='text-purple-500'>Author:</span> <span className='text-purple-400'>{users?.data?.username}</span></h3>
-                                </span>
-                                <span>
-                                    <button onClick={()=>handleEditBlog(blog._id)} className='text-purple-400 rounded-lg'><FaRegEdit /></button>
-                                    <button onClick={()=>handleDeleteBlog(blog._id)} className='text-purple-400 rounded-lg'><FaTrashAlt /></button>
+                                    <h3 className='text-[16px] font-bold'><span className='text-purple-500'>Author:</span> <span className='text-purple-400'>{users?.user?.username}</span></h3>
                                 </span>
                             </div>
                             <h3 className='text-xl font-bold text-purple-500'>{blog?.title}</h3>
@@ -114,4 +114,4 @@ const UserBlog = () => {
     );
 };
 
-export default UserBlog;
+export default UserProfile;

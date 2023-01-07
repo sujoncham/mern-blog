@@ -1,4 +1,5 @@
 import axios from 'axios';
+import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,7 +8,7 @@ const Blog = () => {
     const [searched, setSearched] = useState([]);
     const navigate = useNavigate();
     const sendRequest = async()=>{
-        const res = await axios.get('https://mern-blog-server-uoiu.onrender.com/api/blog/').catch((err)=>console.log(err));
+        const res = await axios.get('http://localhost:5000/api/blog/').catch((err)=>console.log(err));
         const data = await res.data;
         return data;
      }
@@ -44,8 +45,9 @@ const Blog = () => {
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5'>
                 {blogs && searched?.map(blog=><div key={blog._id}>
-                    <img className='w-full h-72' src={blog.image} alt="" />
-                    <p className='font-bold py-3 text-purple-400'>{blog?.user?.username} - {new Date(blog.date).toLocaleDateString()}</p>
+                    <img className='w-full h-60' src={blog.image} alt="" />
+                    <p className='font-bold pt-3 text-purple-400'>{blog?.user?.username} - </p>
+                     <p className='text-purple-400 text-[14px]'>{moment.utc(blog?.date).local().startOf('seconds').fromNow()}</p>
                     <h1 className='font-bold text-xl text-purple-500'>{blog.title}</h1>
                     <p>{blog.description.slice(0, 140)}...</p>
                     <div>

@@ -18,11 +18,11 @@ const Login = () => {
 
     const hangleSubmit = async (e) =>{
         e.preventDefault();
-        await axios.post('https://mern-blog-server-uoiu.onrender.com/api/user/login', {
+        await axios.post('http://localhost:5000/api/user/login', {
             email: inputs.email,
             password: inputs.password,
         }).then((data)=>{
-            console.log(data);
+            // console.log(data);
             console.log('login successfull');
             localStorage.setItem("userId", data.data.id)
             localStorage.setItem("username", data.data.username)

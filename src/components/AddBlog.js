@@ -11,7 +11,7 @@ const AddBlog = () => {
   
    const hangleSubmit =async (e)=>{
       e.preventDefault();
-      await axios.post('https://mern-blog-server-uoiu.onrender.com/api/blog/createBlog', {
+      await axios.post('http://localhost:5000/api/blog/createBlog', {
          title: title,
          description: description,
          image: image,

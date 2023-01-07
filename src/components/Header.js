@@ -1,10 +1,11 @@
 import React from 'react';
 import { FaBloggerB } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
+import UserData from './SharedData/UserData';
 
 const Header = () => {
-    const id = localStorage.getItem('userId')
-    console.log("user Id",id)
+    const id = localStorage.getItem('userId');
+    const {users} = UserData()
     const navigate = useNavigate();
 
     const handleLogout =()=>{
@@ -21,15 +22,14 @@ const Header = () => {
                         <FaBloggerB size={30} /> <span>MERN BLOG</span>
                         </span>
                     </Link>
-                        <span className='flex justify-end items-center gap-5'>
-                            <Link to='/'>Home</Link>
-                            {id && <>
-                            <Link to='/addBlog'>Add Blog</Link>
-                            <Link to='/userBlog'>My Blog</Link>
-                            </>}
-                            {/* <Link to='/blog'>Blog</Link> */}
-                            {!id ? <Link to='/login'>Login</Link> : <button onClick={handleLogout}>Logout</button>}
-                        </span>
+                    <span className='flex justify-end items-center gap-5'>
+                        <Link to='/'>Home</Link>
+                        {id && <>
+                        <Link to='/addBlog'>Add Blog</Link>
+                        </>}
+                        <button className='bg-purple-300 rounded-lg p-1'>{users?.user?.username}</button>
+                        {!id ? <Link to='/login'>Login</Link> : <button onClick={handleLogout}>Logout</button>}
+                    </span>
                 </div>
             </div>
         </div>

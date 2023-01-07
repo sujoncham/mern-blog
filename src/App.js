@@ -16,6 +16,7 @@ import Register from "./components/Register";
 import RequireAuth from "./components/RequireAuth";
 import UpdateBlog from "./components/UpdateBlog";
 import UserBlog from "./components/UserBlog";
+import UserProfile from "./components/UserProfile";
 
 function App() {
   const isLoggedIn = useSelector(state => state.isLoggedIn);
@@ -31,9 +32,10 @@ function App() {
         <Route path='/blog/:id' element={<BlogDetails />}></Route>
         <Route path='/userBlog/:updateId' element={<UpdateBlog />}></Route>
         <Route path='/login' element={<Login />}></Route>
-        <Route path='/userBlog' element={<UserBlog />}></Route>
+        <Route path='/myBlog/:id' element={<UserBlog />}></Route>
         <Route path='/register' element={<Register />}></Route>
         <Route path='/profile/:id' element={<ProfileEdit />}></Route>
+        <Route path='/userProfile/:id' element={<UserProfile />}></Route>
         <Route path='/profileImg/:id' element={<ProfileImg />}></Route>
         <Route path='*' element={<Register />}></Route>
       </Routes>
