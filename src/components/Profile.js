@@ -28,9 +28,7 @@ const Profile = ({users}) => {
                     className='w-24 h-24 rounded-full border-2 border-purple-500 absolute left-[30%] bottom-0' 
                     src={profile + users?.user?.profileImg} 
                     alt="" 
-                    />
-            
-        
+                />
             </div>
             <div className='px-3 py-10'>
                 <div>
