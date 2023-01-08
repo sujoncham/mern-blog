@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SideProfile = ({users}) => {
-    const profile = `http://localhost:5000/`;
+    const profile = `https://mern-blog-server-uoiu.onrender.com/`;
     return (
         <>
             <div className='relative'>

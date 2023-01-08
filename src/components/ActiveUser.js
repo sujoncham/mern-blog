@@ -12,14 +12,14 @@ const ActiveUser = () => {
     // console.log(users)
   
    const { isLoading, error, data } = useQuery({
-    queryKey: ['users'], queryFn: () => fetch('http://localhost:5000/api/user/').then( (res) => res.json() ), })
+    queryKey: ['users'], queryFn: () => fetch('https://mern-blog-server-uoiu.onrender.com/api/user/').then( (res) => res.json() ), })
 
 //    console.log(data.data)
 
     const allUser = data?.data.filter(username => username._id !== users?.user._id)
     console.log(allUser)
 
-    const profile = `http://localhost:5000/`;
+    const profile = `https://mern-blog-server-uoiu.onrender.com/`;
  
     if (isLoading) return 'Loading...'
  

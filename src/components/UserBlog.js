@@ -13,7 +13,7 @@ const UserBlog = () => {
     const {users} = UserData();
     const navigate = useNavigate();
     console.log(users)
-    const profile = `http://localhost:5000/`;
+    const profile = `https://mern-blog-server-uoiu.onrender.com/`;
 
 
 
@@ -28,7 +28,7 @@ const UserBlog = () => {
     const handleDeleteBlog = async(id)=>{
         const delConfirm = window.confirm('are you sure to delete this blog?');
         if(delConfirm){
-            await axios.delete(`http://localhost:5000/api/blog/${id}`)
+            await axios.delete(`https://mern-blog-server-uoiu.onrender.com/api/blog/${id}`)
             .then(()=>{
                 toast('deleted successfully');
                 window.location.reload();

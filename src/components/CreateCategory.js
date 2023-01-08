@@ -10,7 +10,7 @@ const CreateCategory = () => {
    
      const hangleSubmit =async (e)=>{
         e.preventDefault();
-        await axios.post('http://localhost:5000/api/category/createCategory', {
+        await axios.post('https://mern-blog-server-uoiu.onrender.com/api/category/createCategory', {
             category : inputs,
             user: localStorage.getItem('userId'),
          }).catch((err)=>{

@@ -21,7 +21,7 @@ const UpdateBlog = () => {
 
     useEffect(()=>{
         const getData = async () =>{
-            const res = await axios.get(`http://localhost:5000/api/blog/${updateId}`).catch((err)=>console.log(err));
+            const res = await axios.get(`https://mern-blog-server-uoiu.onrender.com/api/blog/${updateId}`).catch((err)=>console.log(err));
             const data = await res.data;
             setDetail(data);
             setInputs({
@@ -35,7 +35,7 @@ const UpdateBlog = () => {
     console.log(detail);
 
     const getData = async () =>{
-        const res = await axios.patch(`http://localhost:5000/api/blog/updateBlog/${updateId}`, {
+        const res = await axios.patch(`https://mern-blog-server-uoiu.onrender.com/api/blog/updateBlog/${updateId}`, {
             title:inputs.title,
             description:inputs.description,
             image:inputs.image,
