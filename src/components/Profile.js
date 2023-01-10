@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const Profile = ({users}) => {
     const navigate = useNavigate()
     const id = localStorage.getItem('userId');
-    const profile = `https://mern-blog-server-uoiu.onrender.com/`;
+    const profile = `http://localhost:5000/`;
 
     const handleEditBlog = (id)=>{
         navigate(`/profile/${id}`)

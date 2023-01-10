@@ -8,7 +8,7 @@ const Blog = () => {
     const [searched, setSearched] = useState([]);
     const navigate = useNavigate();
     const sendRequest = async()=>{
-        const res = await axios.get('https://mern-blog-server-uoiu.onrender.com/api/blog/').catch((err)=>console.log(err));
+        const res = await axios.get('http://localhost:5000/api/blog/').catch((err)=>console.log(err));
         const data = await res.data;
         return data;
      }
@@ -51,7 +51,7 @@ const Blog = () => {
                     <h1 className='font-bold text-xl text-purple-500'>{blog.title}</h1>
                     <p>{blog.description.slice(0, 140)}...</p>
                     <div>
-                        <button onClick={()=>handleDetail(blog._id)} className='px-3 py-2 bg-purple-500 rounded-lg hover:bg-purple-400 hover:text-white'>read more</button>
+                        <button onClick={()=>handleDetail(blog._id)} className='px-2 py-1 bg-purple-500 text-white rounded-lg hover:bg-purple-400 hover:text-white'>read more</button>
                     </div>
                 </div>)}
             </div>

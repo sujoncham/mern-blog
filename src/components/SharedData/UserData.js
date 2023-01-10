@@ -4,9 +4,9 @@ const UserData = () => {
     const id = localStorage.getItem('userId');
   
     const { isLoading, error, data } = useQuery({
-        queryKey: ['users', id],
+        queryKey: ['userLogin', id],
         queryFn: () =>
-          fetch(`https://mern-blog-server-uoiu.onrender.com/api/user/profile/${id}`).then(
+          fetch(`http://localhost:5000/api/user/profile/${id}`).then(
             (res) => res.json(),
           ),
         })

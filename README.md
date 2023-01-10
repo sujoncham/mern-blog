@@ -2,6 +2,8 @@
 
 #### Live Project: (https://mern-blog-client.onrender.com/)
 
+#### Live Project: (https://mern-blog-pro.netlify.app/)
+
 ##### Server Git Link: (https://github.com/sujoncham/mern-blog-server.git)
 
 ![Alt text](public/images/Screenshot_11.png)
@@ -9,30 +11,33 @@
 ## Name of Project
 
 - Mern Blog
-- reactsj, Nodejs, mongodb based
+- reactjs, Nodejs, ExpressJs, mongodb, mongoose based
 - Language : Javascript
+- Server: NodeJs
+- Database: mongodb atlas
 
-## Home Page
+## User Home Page
 
-![Alt text](public/images/Screenshot_12.png)
+![Alt text](public/images/Screenshot_15.png)
 
-## Technology used in Blog
+## User Profile Page
 
-- reactjs
-- tailwindcss
-- nodejs
-- expressjs
-- mongodb-atlas
-- mongoose
+![Alt text](public/images/Screenshot_16.png)
+
+## Technologies used in Blog
+
 - github
 - vscode
 
 ## Packages used in Blog front end development
 
+- reactjs
+- tailwindcss
 - react-icons
 - react-router-dom
 - toastify
 - axios
+- reactQuery
 
 ## Packages used in Blog back end development
 
@@ -40,6 +45,10 @@
 - dotenv
 - nodemon
 - multer
+- nodejs
+- expressjs
+- mongodb-atlas
+- mongoose
 
 ## Authenticate this Blog
 
@@ -49,6 +58,7 @@
 
 ## How to use this Blog
 
+- if clone this site, first - npm install(front-end and backend)
 - first, register
 - then, login
 - update your profile
@@ -60,16 +70,16 @@
 
 ## requirements pending this Blog
 
-- user likes
+- user likes - done
 - category adding
 - email verification
 - google login system
-- profile image adding
+- profile image adding - done
 
 ### Primarily Deploy this project
 
 - server-side deploy in render.com
-- client-side deploy in render.com
+- client-side deploy in render.com/netlify.com
 
 *
 *

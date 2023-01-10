@@ -6,12 +6,12 @@ const Comments = ({post, id}) => {
     const [comment, setComment] = useState("")
     
     console.log(post?.comments)
-    const profile = `https://mern-blog-server-uoiu.onrender.com/`;
+    const profile = `http://localhost:5000/`;
 
      const hangleComment =(e)=>{
         e.preventDefault();
         const getComment = async () =>{
-            await axios.patch(`https://mern-blog-server-uoiu.onrender.com/api/blog/${id}/comment`, {
+            await axios.patch(`http://localhost:5000/api/blog/${id}/comment`, {
                 comments: comment,
                 user: localStorage.getItem('userId'),
             })

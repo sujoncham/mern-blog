@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import React from 'react';
 import { FaCheckCircle, FaPlus } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
-import { getFollow } from './SharedData/Follow';
 import UserData from './SharedData/UserData';
 
 const ActiveUser = () => {
@@ -12,21 +12,39 @@ const ActiveUser = () => {
     // console.log(users)
   
    const { isLoading, error, data } = useQuery({
-    queryKey: ['users'], queryFn: () => fetch('https://mern-blog-server-uoiu.onrender.com/api/user/').then( (res) => res.json() ), })
+    queryKey: ['users'], queryFn: () => fetch('http://localhost:5000/api/user/').then( (res) => res.json() ), })
 
 //    console.log(data.data)
 
-    const allUser = data?.data.filter(username => username._id !== users?.user._id)
-    console.log(allUser)
+    const allUser = data?.data?.filter(username => username?._id !== users?.user._id)
+    // console.log(allUser)
 
-    const profile = `https://mern-blog-server-uoiu.onrender.com/`;
+    const profile = `http://localhost:5000/`;
  
     if (isLoading) return 'Loading...'
  
     if (error) return 'An error has occurred: ' + error.message;
 
-    const handleFollow =(id)=>{
-        getFollow(id);
+    const handleFollow =async (id)=>{
+        await axios.patch(`http://localhost:5000/api/user/profile/${id}/follow`, {
+                userId: localStorage.getItem('userId')
+            })
+            .catch((err)=>console.log(err))
+            .then((data)=>{
+                console.log(data)
+                console.log('successfull follow')
+            });
+    }
+
+    const handleUnfollow =async (id)=>{
+        await axios.patch(`http://localhost:5000/api/user/profile/${id}/unfollow`, {
+            userId: localStorage.getItem('userId')
+        })
+        .catch((err)=>console.log(err))
+        .then((data)=>{
+            console.log(data)
+            console.log('successfull follow')
+        });
     }
 
     const singleUserProfile = (id) =>{
@@ -50,8 +68,21 @@ const ActiveUser = () => {
                                     <button onClick={()=>singleUserProfile(user._id)} className='cursor-pointer hover:text-purple-600 hover:underline'>{user?.username}</button>
                                     <h3>{user?.address}</h3>
                                 </span>
-                                <span onClick={()=>handleFollow(users?.user._id)} className='bg-purple-500 hover:bg-purple-400 p-1 text-white cursor-pointer'>
-                                   { user?.followers.length ? <FaCheckCircle /> : <FaPlus /> }
+                                <span>
+                                {
+                                user?.followers.length ? 
+                                <div 
+                                    onClick={()=>handleFollow(user._id)} 
+                                    className='bg-purple-500 hover:bg-purple-400 p-1 text-white cursor-pointer'>
+                                    <FaCheckCircle size={30} />
+                                </div>
+                                :
+                                <div 
+                                    onClick={()=>handleUnfollow(user._id)} 
+                                    className='bg-purple-500 hover:bg-purple-400 p-1 text-white cursor-pointer'>
+                                   <FaPlus size={30} /> 
+                                </div>
+                                }
                                 </span>
                             </div>
                         </div>

@@ -26,8 +26,9 @@ const Header = () => {
                         <Link to='/'>Home</Link>
                         {id && <>
                         <Link to='/addBlog'>Add Blog</Link>
+                        <Link to='/myBlog'>My Blog</Link>
                         </>}
-                        <button className='bg-purple-300 rounded-lg p-1'>{users?.user?.username}</button>
+                        <button className='bg-purple-300 rounded-lg p-1'>{users?.user?.username?.slice(0, 5)}</button>
                         {!id ? <Link to='/login'>Login</Link> : <button onClick={handleLogout}>Logout</button>}
                     </span>
                 </div>

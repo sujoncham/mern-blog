@@ -12,7 +12,7 @@ const Register = () => {
     const hangleSubmit =(e)=>{
          e.preventDefault();
          const sendRequest = async ()=>{
-            await axios.post('https://mern-blog-server-uoiu.onrender.com/api/user/signup', {
+            await axios.post('http://localhost:5000/api/user/signup', {
                  username: username,
                  email: email,
                  password: password,

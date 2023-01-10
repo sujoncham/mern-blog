@@ -33,6 +33,7 @@ function App() {
         <Route path='/userBlog/:updateId' element={<UpdateBlog />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/myBlog/:id' element={<UserBlog />}></Route>
+        <Route path='/myBlog' element={<UserBlog />}></Route>
         <Route path='/register' element={<Register />}></Route>
         <Route path='/profile/:id' element={<ProfileEdit />}></Route>
         <Route path='/userProfile/:id' element={<UserProfile />}></Route>

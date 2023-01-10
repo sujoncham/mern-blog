@@ -1,20 +1,26 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import moment from 'moment';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import ActiveUser from './ActiveUser';
 import SideProfile from './SideProfile';
 
+/// getting this component from activeuser component
 const UserProfile = () => {
     const {id} = useParams()
     const navigate = useNavigate();
-    const profile = `https://mern-blog-server-uoiu.onrender.com/`;
+    const [isFollowing, setIsFollowing] = useState(false);
+    const profile = `http://localhost:5000/`;
+
+    useEffect(()=>{
+        setIsFollowing(localStorage.getItem('userId'))
+    }, [])
     
     const { isLoading, error, data } = useQuery({
         queryKey: ['users', id],
         queryFn: () =>
-          fetch(`https://mern-blog-server-uoiu.onrender.com/api/user/profile/${id}`).then(
+          fetch(`http://localhost:5000/api/user/profile/${id}`).then(
             (res) => res.json(),
           ),
         })
@@ -25,22 +31,24 @@ const UserProfile = () => {
         }
 
         const handleFollow =async (id)=>{
-            await axios.patch(`https://mern-blog-server-uoiu.onrender.com/api/user/profile/${id}/follow`, {
+            await axios.patch(`http://localhost:5000/api/user/profile/${id}/follow`, {
                 userId: localStorage.getItem('userId')
             })
             .catch((err)=>console.log(err))
             .then((data)=>{
                 console.log(data)
+                setIsFollowing(true)
                 console.log('successfull follow')
             });
         }
         const handleUnfollow =async (id)=>{
-            await axios.patch(`https://mern-blog-server-uoiu.onrender.com/api/user/profile/${id}/unFollow`, {
+            await axios.patch(`http://localhost:5000/api/user/profile/${id}/unfollow`, {
                 userId: localStorage.getItem('userId')
             })
             .catch((err)=>console.log(err))
             .then((data)=>{
                 console.log(data)
+                setIsFollowing(false)
                 console.log('successfull follow')
             });
         }
@@ -53,7 +61,7 @@ const UserProfile = () => {
         <div className='container mx-auto px-10 bg-purple-100'>
             <h1 className='text-3xl font-bold text-purple-600'>My Blogs</h1>
             <div className='flex gap-5'>
-                <div className='w-[25%] bg-purple-200'> 
+                <div className='w-[25%] bg-purple-200 sticky top-0'> 
                     <SideProfile users={users} />
                 </div>
                 <div className='w-[50%]'> 
@@ -76,10 +84,10 @@ const UserProfile = () => {
                         <span>{users?.user?.address}</span>
                         <span className='flex flex-col items-center'>
                             {
-                                users?.user?.followers === users?.user?._id ?
-                                <button onClick={()=>handleFollow(users?.user?._id)} className='bg-purple-500 px-2 py-1 rounded-lg'>Follow</button>
-                            :
-                                <button onClick={()=>handleUnfollow(users?.user?._id)} className='bg-purple-500 px-2 py-1 rounded-lg'>Unfollow</button>
+                               isFollowing ?
+                               <button onClick={()=>handleUnfollow(users?.user?._id)} className='bg-purple-500 px-2 py-1 rounded-lg'>Unfollow</button>
+                               :
+                               <button onClick={()=>handleFollow(users?.user?._id)} className='bg-purple-500 px-2 py-1 rounded-lg'>Follow</button>
                             }
                         </span>
                         <span>{users?.user?.phone}</span>

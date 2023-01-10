@@ -6,16 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import ActiveUser from './ActiveUser';
 import Profile from './Profile';
-import { getFollow, getUnfollow } from './SharedData/Follow';
 import UserData from './SharedData/UserData';
 
 const UserBlog = () => {
     const {users} = UserData();
     const navigate = useNavigate();
     console.log(users)
-    const profile = `https://mern-blog-server-uoiu.onrender.com/`;
-
-
+    const profile = `http://localhost:5000/`;
 
     const handleDetail = (id) =>{
         navigate(`/blog/${id}`)
@@ -28,7 +25,7 @@ const UserBlog = () => {
     const handleDeleteBlog = async(id)=>{
         const delConfirm = window.confirm('are you sure to delete this blog?');
         if(delConfirm){
-            await axios.delete(`https://mern-blog-server-uoiu.onrender.com/api/blog/${id}`)
+            await axios.delete(`http://localhost:5000/api/blog/${id}`)
             .then(()=>{
                 toast('deleted successfully');
                 window.location.reload();
@@ -38,11 +35,25 @@ const UserBlog = () => {
         }
     }
 
-    const handleFollow =(id)=>{
-        getFollow(id);
+    const handleFollow =async (id)=>{
+        await axios.patch(`http://localhost:5000/api/user/profile/${id}/follow`, {
+            userId: localStorage.getItem('userId')
+        })
+        .catch((err)=>console.log(err))
+        .then((data)=>{
+            console.log(data)
+            console.log('successfull follow')
+        });
     }
-    const handleUnfollow =(id)=>{
-        getUnfollow(id);
+    const handleUnfollow =async (id)=>{
+        await axios.patch(`http://localhost:5000/api/user/profile/${id}/unfollow`, {
+            userId: localStorage.getItem('userId')
+        })
+        .catch((err)=>console.log(err))
+        .then((data)=>{
+            console.log(data)
+            console.log('successfull follow')
+        });
     }
 
     return (
