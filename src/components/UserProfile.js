@@ -11,7 +11,7 @@ const UserProfile = () => {
     const {id} = useParams()
     const navigate = useNavigate();
     const [isFollowing, setIsFollowing] = useState(false);
-    const profile = `http://localhost:5000/`;
+    const profile = `https://mern-blog-server-uoiu.onrender.com/`;
 
     useEffect(()=>{
         setIsFollowing(localStorage.getItem('userId'))
@@ -20,7 +20,7 @@ const UserProfile = () => {
     const { isLoading, error, data } = useQuery({
         queryKey: ['users', id],
         queryFn: () =>
-          fetch(`http://localhost:5000/api/user/profile/${id}`).then(
+          fetch(`https://mern-blog-server-uoiu.onrender.com/api/user/profile/${id}`).then(
             (res) => res.json(),
           ),
         })
@@ -31,7 +31,7 @@ const UserProfile = () => {
         }
 
         const handleFollow =async (id)=>{
-            await axios.patch(`http://localhost:5000/api/user/profile/${id}/follow`, {
+            await axios.patch(`https://mern-blog-server-uoiu.onrender.com/api/user/profile/${id}/follow`, {
                 userId: localStorage.getItem('userId')
             })
             .catch((err)=>console.log(err))
@@ -42,7 +42,7 @@ const UserProfile = () => {
             });
         }
         const handleUnfollow =async (id)=>{
-            await axios.patch(`http://localhost:5000/api/user/profile/${id}/unfollow`, {
+            await axios.patch(`https://mern-blog-server-uoiu.onrender.com/api/user/profile/${id}/unfollow`, {
                 userId: localStorage.getItem('userId')
             })
             .catch((err)=>console.log(err))

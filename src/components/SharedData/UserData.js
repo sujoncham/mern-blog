@@ -6,7 +6,7 @@ const UserData = () => {
     const { isLoading, error, data } = useQuery({
         queryKey: ['userLogin', id],
         queryFn: () =>
-          fetch(`http://localhost:5000/api/user/profile/${id}`).then(
+          fetch(`https://mern-blog-server-uoiu.onrender.com/api/user/profile/${id}`).then(
             (res) => res.json(),
           ),
         })

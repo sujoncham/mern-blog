@@ -22,7 +22,7 @@ const ProfileImg = () => {
         formData.append('bannerImg', bannerImg);
         formData.append('profileImg', profileImg);
 
-        await axios.patch(`http://localhost:5000/api/user/profileImgUpdate/${id}`, formData).catch((err)=>console.log(err)).then((data)=>{
+        await axios.patch(`https://mern-blog-server-uoiu.onrender.com/api/user/profileImgUpdate/${id}`, formData).catch((err)=>console.log(err)).then((data)=>{
             console.log("successfull", data)
         });
     };
