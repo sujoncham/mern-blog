@@ -4,6 +4,7 @@ import Blog from './Blog';
 // import Category from './Category';
 import Profile from './Profile';
 import UserData from './SharedData/UserData';
+import SuggestedUser from './SuggestedUser';
 
 
 const Home = () => {
@@ -20,6 +21,7 @@ const Home = () => {
                 </div>
                 <div className='w-[25%] bg-purple-200 px-3 sticky top-0'> 
                     <ActiveUser />
+                    <SuggestedUser />
                 </div>
             </div>
         </div>

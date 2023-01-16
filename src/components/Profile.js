@@ -13,6 +13,9 @@ const Profile = ({users}) => {
     const handleProfileImg = (id)=>{
         navigate(`/profileImg/${id}`)
     }
+    const handleSetting = async(id)=>{
+        navigate(`/profile/account/${id}`)
+    }
     return (
         <>
             <div>
@@ -31,8 +34,9 @@ const Profile = ({users}) => {
                 />
             </div>
             <div className='px-3 py-10'>
-                <div>
+                <div className='flex justify-between items-center'>
                     <button onClick={()=>handleEditBlog(id)} className='px-3 py-2 bg-purple-300 rounded-lg'><FaRegEdit /></button>
+                    <button onClick={()=>handleSetting(id)} className='px-1 py-1 bg-purple-300 rounded-lg'>setting</button>
                 </div>
                 <div className='bg-purple-100 px-2 py-2 mt-1'>
                     <h4 className='font-bold text-purple-500'>Username:</h4>

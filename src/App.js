@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
+import AccountDelete from "./components/AccountDelete";
 import AddBlog from "./components/AddBlog";
 import Blog from "./components/Blog";
 import BlogDetails from "./components/BlogDetails";
@@ -36,6 +37,7 @@ function App() {
         <Route path='/myBlog' element={<UserBlog />}></Route>
         <Route path='/register' element={<Register />}></Route>
         <Route path='/profile/:id' element={<ProfileEdit />}></Route>
+        <Route path='/profile/account/:id' element={<AccountDelete />}></Route>
         <Route path='/userProfile/:id' element={<UserProfile />}></Route>
         <Route path='/profileImg/:id' element={<ProfileImg />}></Route>
         <Route path='*' element={<Register />}></Route>

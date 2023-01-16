@@ -5,7 +5,7 @@ import { FaCheckCircle, FaPlus } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import UserData from './SharedData/UserData';
 
-const ActiveUser = () => {
+const SuggestedUser = () => {
     const navigate = useNavigate()
 
     const {users} = UserData();
@@ -17,7 +17,7 @@ const ActiveUser = () => {
 //    console.log(data.data)
 
     const allUser = data?.data?.filter(username => username?._id !== users?.user._id)
-    const follower = allUser?.filter(follow=>follow?.followings === users?.user?.followers)
+    // console.log(allUser)
 
     const profile = `http://localhost:5000/`;
  
@@ -53,9 +53,9 @@ const ActiveUser = () => {
    
     return (
         <div className='border-2 border-purple-300 bg-purple-300 px-1 py-1 mt-2 rounded-lg'>
-            <h1>Followers : {follower?.length}</h1>
+            <h1>Suggested to followers</h1>
             {
-                follower?.map(user => {
+                allUser?.map(user => {
                     return(
                         <div key={user._id} className='flex justify-start items-center gap-3 mt-2 bg-white p-1 rounded-lg'>
                             <img 
@@ -93,4 +93,4 @@ const ActiveUser = () => {
     );
 };
 
-export default ActiveUser;
+export default SuggestedUser;
