@@ -9,7 +9,7 @@ const AccountDelete = () => {
     const handleDeleteAccount = async(id)=>{
         const delConfirm = window.confirm('are you sure to delete this User?');
         if(delConfirm){
-            await axios.delete(`https://mern-blog-server-uoiu.onrender.com/api/user/profile/deleteAccount/${id}`)
+            await axios.delete(`http://localhost:5000/api/user/profile/deleteAccount/${id}`)
             .then(()=>{
                 localStorage.removeItem("userId")
                 navigate('/login')

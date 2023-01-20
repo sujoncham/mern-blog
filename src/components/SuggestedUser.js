@@ -12,7 +12,7 @@ const SuggestedUser = () => {
     // console.log(users)
   
    const { isLoading, error, data } = useQuery({
-    queryKey: ['users'], queryFn: () => fetch('https://mern-blog-server-uoiu.onrender.com/api/user/').then( (res) => res.json() ), })
+    queryKey: ['users'], queryFn: () => fetch('http://localhost:5000/api/user/').then( (res) => res.json() ), })
 
 //    console.log(data.data)
 
@@ -26,7 +26,7 @@ const SuggestedUser = () => {
     if (error) return 'An error has occurred: ' + error.message;
 
     const handleFollow =async (id)=>{
-        await axios.patch(`https://mern-blog-server-uoiu.onrender.com/api/user/profile/${id}/follow`, {
+        await axios.patch(`http://localhost:5000/api/user/profile/${id}/follow`, {
                 userId: localStorage.getItem('userId')
             })
             .catch((err)=>console.log(err))
@@ -37,7 +37,7 @@ const SuggestedUser = () => {
     }
 
     const handleUnfollow =async (id)=>{
-        await axios.patch(`https://mern-blog-server-uoiu.onrender.com/api/user/profile/${id}/unfollow`, {
+        await axios.patch(`http://localhost:5000/api/user/profile/${id}/unfollow`, {
             userId: localStorage.getItem('userId')
         })
         .catch((err)=>console.log(err))

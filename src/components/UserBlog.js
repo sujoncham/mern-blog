@@ -25,7 +25,7 @@ const UserBlog = () => {
     const handleDeleteBlog = async(id)=>{
         const delConfirm = window.confirm('are you sure to delete this blog?');
         if(delConfirm){
-            await axios.delete(`https://mern-blog-server-uoiu.onrender.com/api/blog/${id}`)
+            await axios.delete(`http://localhost:5000/api/blog/${id}`)
             .then(()=>{
                 toast('deleted successfully');
                 window.location.reload();
@@ -36,7 +36,7 @@ const UserBlog = () => {
     }
 
     const handleFollow =async (id)=>{
-        await axios.patch(`https://mern-blog-server-uoiu.onrender.com/api/user/profile/${id}/follow`, {
+        await axios.patch(`http://localhost:5000/api/user/profile/${id}/follow`, {
             userId: localStorage.getItem('userId')
         })
         .catch((err)=>console.log(err))
@@ -46,7 +46,7 @@ const UserBlog = () => {
         });
     }
     const handleUnfollow =async (id)=>{
-        await axios.patch(`https://mern-blog-server-uoiu.onrender.com/api/user/profile/${id}/unfollow`, {
+        await axios.patch(`http://localhost:5000/api/user/profile/${id}/unfollow`, {
             userId: localStorage.getItem('userId')
         })
         .catch((err)=>console.log(err))

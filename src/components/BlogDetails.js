@@ -19,7 +19,7 @@ const BlogDetails = () => {
 
     useEffect(()=>{
         const getData = async () =>{
-            await axios.get(`https://mern-blog-server-uoiu.onrender.com/api/blog/${id}`)
+            await axios.get(`http://localhost:5000/api/blog/${id}`)
             .catch((err)=>console.log(err))
             .then((data)=>{
                 console.log(data)
@@ -36,7 +36,7 @@ const BlogDetails = () => {
 
     const handleLike =()=>{
         const getLike = async () =>{
-            await axios.patch(`https://mern-blog-server-uoiu.onrender.com/api/blog/${id}/like`, {
+            await axios.patch(`http://localhost:5000/api/blog/${id}/like`, {
                 user: localStorage.getItem('userId')
             })
             .catch((err)=>console.log(err))

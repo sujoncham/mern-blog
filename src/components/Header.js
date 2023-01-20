@@ -28,8 +28,8 @@ const Header = () => {
                         <Link to='/addBlog'>Add Blog</Link>
                         <Link to='/myBlog'>My Blog</Link>
                         </>}
-                        <button className='bg-purple-300 rounded-lg p-1'>{users?.user?.username?.slice(0, 5)}</button>
-                        {!id ? <Link to='/login'>Login</Link> : <button onClick={handleLogout}>Logout</button>}
+                        <button className='bg-white rounded-lg p-1'>{users?.user?.username?.slice(0, 5)}</button>
+                        {!id ? <Link to='/login'>Login</Link> : <button className='border-2 border-purple-50 rounded-lg px-1' onClick={handleLogout}>Logout</button>}
                     </span>
                 </div>
             </div>
